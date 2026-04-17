@@ -2,16 +2,23 @@
 <html lang="cs">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#FFD700" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="theme-color" content="#121212" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="RB TAXI" />
   <title>RB TAXI – Výčetka</title>
   <link rel="manifest" href="manifest.json" />
-  <link rel="stylesheet" href="style.css?v=v14_20250829" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css?v=v25_20260417_luxury_themefix" />
   <link rel="icon" href="icon-192.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Playfair+Display:wght@600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   
@@ -25,6 +32,9 @@
   </symbol>
   <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="9"/><path d="M12 7v6l4 2"/>
+  </symbol>
+  <symbol id="icon-car" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M7 17h10" /><path d="M5 17v-5l2-5h10l2 5v5" /><circle cx="7" cy="17" r="2" /><circle cx="17" cy="17" r="2" /><path d="M7 12h10" />
   </symbol>
   <symbol id="icon-road" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <path d="M4 20l6-16 4 16 6-16" /><path d="M12 4v4m0 4v4m0 4v0"/>
@@ -71,65 +81,78 @@
 </svg>
 
   <header>
-    <h1><img src="icon-192.png" alt="RB TAXI" class="brand-icon" /> <span class="brand-title">Výčetka řidiče</span></h1>
-    <div id="themeToggle"><span class="ico">🌙</span> Tmavý režim</div>
+    <h1><img src="icon-192.png" width="30" height="30" alt="RB TAXI" class="brand-icon" /> <span class="brand-stack"><span class="brand-eyebrow">RB TAXI</span><span class="brand-title">Výčetka řidiče</span></span></h1>
+    <button type="button" id="themeToggle" aria-label="Přepnout barevný režim"><span class="ico" aria-hidden="true">🌙</span> Režim: tmavý</button>
   </header>
   <main>
-    <form id="calcForm">
-      <label><span class="ico">👤</span> Řidič: <input type="text" id="driverName" placeholder="Jméno řidiče" required /></label>
-      <label><span class="ico">⏱️</span> Typ směny:
-        <select id="shiftType">
-          <option value="den">Denní</option>
-          <option value="noc">Noční</option>
-          <option value="odpo">Odpolední</option>
-          <option value="pul">1/2 směna</option>
-        </select>
-      </label>
-      <label><span class="ico">✨</span> RZ vozidla:
-        <select id="rz">
-          <option value="">— vyberte RZ —</option>
-          <option>1BU0299</option>
-          <option>1BU0060</option>
-          <option>2BT6881</option>
-          <option>2BT1565</option>
-          <option>2BY5398</option>
-          <option>2BL8995</option>
-          <option>3BD6003</option>
-        </select>
-      </label>
-      <label><span class="ico">🏁</span> Počáteční km:
-        <input type="number" id="kmStart" inputmode="numeric" />
-      </label>
-      <label><span class="ico">🏁</span> Konečné km:
-        <input type="number" id="kmEnd" inputmode="numeric" />
-      </label>
-      <label><span class="ico">🛣️</span> Najeté km (auto):
-        <input type="number" id="kmReal" readonly />
-      </label>
-      <label><span class="ico">💰</span> Tržba: <input type="number" id="trzba" required /></label>
-      <label><span class="ico">🏁</span> Přístavné: <input type="number" id="pristavne" /></label>
-      <label><span class="ico">⛽</span> Palivo: <input type="number" id="palivo" /></label>
-      <label><span class="ico">🧼</span> Mytí: <input type="number" id="myti" /></label>
-      <label><span class="ico">💳</span> Kartou: <input type="number" id="kartou" /></label>
-      <label>🧾 Fakturou: <input type="number" id="fakturou" /></label>
-      <label><span class="ico">🧾</span> Jiné: <input type="number" id="jine" /></label>
+    <form id="calcForm" autocomplete="off">
+      <fieldset>
+        <legend>Směna</legend>
+        <label><span class="ico" aria-hidden="true">👤</span> Řidič: <input type="text" id="driverName" name="driverName" placeholder="Jméno řidiče…" autocomplete="name" required /></label>
+        <label><span class="ico">⏱️</span> Typ směny:
+          <select id="shiftType" name="shiftType">
+            <option value="den">Denní</option>
+            <option value="noc">Noční</option>
+            <option value="odpo">Odpolední</option>
+            <option value="pul">1/2 směna</option>
+          </select>
+        </label>
+        <label><span class="ico">🚕</span> RZ vozidla:
+          <select id="rz" name="rz" required>
+            <option value="">— vyberte RZ —</option>
+            <option>1BU0299</option>
+            <option>1BU0060</option>
+            <option>2BT6881</option>
+            <option>2BT1565</option>
+            <option>2BY5398</option>
+            <option>2BL8995</option>
+            <option>3BD6003</option>
+          </select>
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Kilometry</legend>
+        <label><span class="ico">🏁</span> Počáteční km:
+          <input type="number" id="kmStart" name="kmStart" inputmode="numeric" min="0" step="1" required />
+        </label>
+        <label><span class="ico">🏁</span> Konečné km:
+          <input type="number" id="kmEnd" name="kmEnd" inputmode="numeric" min="0" step="1" required />
+        </label>
+        <label><span class="ico">🛣️</span> Najeté km:
+          <input type="number" id="kmReal" name="kmReal" readonly tabindex="-1" />
+        </label>
+      </fieldset>
+
+      <fieldset>
+        <legend>Platby a odpočty</legend>
+        <label><span class="ico">💰</span> Tržba: <input type="number" id="trzba" name="trzba" inputmode="decimal" min="0" step="0.01" required /></label>
+        <label><span class="ico">🏁</span> Přístavné: <input type="number" id="pristavne" name="pristavne" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="ico">⛽</span> Palivo: <input type="number" id="palivo" name="palivo" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="ico">🧼</span> Mytí: <input type="number" id="myti" name="myti" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="ico">💳</span> Kartou: <input type="number" id="kartou" name="kartou" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="ico">🧾</span> Fakturou: <input type="number" id="fakturou" name="fakturou" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="ico">🧾</span> Jiné: <input type="number" id="jine" name="jine" inputmode="decimal" min="0" step="0.01" /></label>
+      </fieldset>
 
       <div class="form-actions">
         <button type="submit"><span class="ico">🧮</span> Vypočítat</button>
-        <button type="button" id="resetBtn"><span class="ico">🔄</span> Reset</button>
+        <button type="button" id="resetBtn" class="secondary"><span class="ico">🔄</span> Reset</button>
         
       </div>
     </form>
 
-    <section id="output" class="hidden"></section>
+    <section id="output" class="hidden" aria-live="polite"></section>
     <div id="actions" class="hidden">
-      <button type="button" id="newShiftBtn"><span class="ico">🔁</span> Nová směna</button>
-    
-        <button type="button" id="shareImgBtn" title="Sdílet výčetku">Sdílet výčetku</button></div>
+      <button type="button" id="newShiftBtn" class="secondary"><span class="ico">🔁</span> Nová směna</button>
+      <button type="button" id="shareBtn"><span class="ico">📋</span> Sdílet text</button>
+      <button type="button" id="shareImgBtn" title="Sdílet výčetku"><span class="ico">📸</span> Sdílet obrázek</button>
+      <button type="button" id="pdfExport"><span class="ico">🧾</span> Uložit PDF</button>
+    </div>
   
-    <footer id="appVersion" style="text-align:center;color:#9aa0a6;margin:10px 0;font-size:12px;">RB TAXI Mobile v9_ultra_20250820192037</footer>
+    <footer id="appVersion" style="text-align:center;color:#9aa0a6;margin:10px 0;font-size:12px;">RB TAXI Mobile v25_20260417_luxury_themefix</footer>
 </main>
 
-  <script src="app.js?v=v19_1756477090" defer></script>
+  <script src="app.js?v=v25_20260417_luxury_themefix" defer></script>
 </body>
 </html>
