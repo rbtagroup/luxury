@@ -5,8 +5,8 @@
   --line: rgba(255, 255, 255, .14);
   --line-bright: rgba(245, 210, 111, .42);
   --text: #fbfaf5;
-  --muted: #c8c4b8;
-  --subtle: #8f8a7f;
+  --muted: #ddd8cc;
+  --subtle: #b6afa1;
   --accent: #f2c94c;
   --accent-soft: #ffe28a;
   --accent-ink: #1a1608;
@@ -191,7 +191,7 @@ legend {
   color: var(--accent);
   font-size: 12px;
   font-weight: 800;
-  letter-spacing: .16em;
+  letter-spacing: 0;
   line-height: 1;
   text-transform: uppercase;
 }
