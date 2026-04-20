@@ -1,9 +1,9 @@
-const CACHE_NAME = "rb-taxi-cache-v29-20260420-visual-audit";
+const CACHE_NAME = "rb-taxi-cache-v31-20260420-desktop-geometry";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./style.css?v=v29_20260420_visual_audit",
-  "./app.js?v=v29_20260420_visual_audit",
+  "./style.css?v=v31_20260420_desktop_geometry",
+  "./app.js?v=v31_20260420_desktop_geometry",
   "./icon-192.png",
   "./icon-512.png",
   "./apple-touch-icon.png",

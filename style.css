@@ -137,7 +137,7 @@ header h1 {
 }
 
 main {
-  width: min(940px, 100%);
+  width: min(1150px, 100%);
   margin: 0 auto;
   padding: 14px 12px calc(14px + env(safe-area-inset-bottom));
 }
@@ -173,7 +173,7 @@ fieldset {
   margin: 0;
   padding: 16px;
   display: grid;
-  grid-template-columns: 118px repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
   border: 0;
   border-bottom: 1px solid var(--line);
@@ -184,9 +184,8 @@ fieldset:last-of-type {
 }
 
 legend {
-  grid-column: auto;
-  align-self: center;
-  width: auto;
+  grid-column: 1 / -1;
+  width: 100%;
   padding: 0;
   color: var(--accent);
   font-size: 12px;
@@ -480,11 +479,11 @@ button.secondary,
 
 @media (min-width: 860px) {
   fieldset {
-    grid-template-columns: 118px repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   fieldset:nth-of-type(3) {
-    grid-template-columns: 118px repeat(4, minmax(0, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
 
