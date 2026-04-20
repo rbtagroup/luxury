@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // === CONFIG ===
-  const APP_VERSION = "v31_20260420_desktop_geometry";
+  const APP_VERSION = "v32_20260420_form_rebuild";
   const COMMISSION_RATE = 0.30;        // 30 % z netto tržby
   const BASE_FULL_SHIFT = 1000;        // fix pro plnou směnu
   const BASE_HALF_SHIFT = 500;         // fix pro 1/2 směnu

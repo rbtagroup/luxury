@@ -169,30 +169,36 @@ form {
   animation: riseIn .42s ease both;
 }
 
-fieldset {
+.form-section {
   margin: 0;
   padding: 16px;
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
   border: 0;
   border-bottom: 1px solid var(--line);
 }
 
-fieldset:last-of-type {
+.form-section:last-of-type {
   border-bottom: 0;
 }
 
-legend {
-  grid-column: 1 / -1;
-  width: 100%;
-  padding: 0;
+.section-title {
+  margin: 0 0 14px;
   color: var(--accent);
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0;
   line-height: 1;
   text-transform: uppercase;
+}
+
+.fields-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px 12px;
+}
+
+.fields-grid-3,
+.fields-grid-5 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 label {
@@ -478,11 +484,11 @@ button.secondary,
 }
 
 @media (min-width: 860px) {
-  fieldset {
+  .fields-grid-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  fieldset:nth-of-type(3) {
+  .fields-grid-5 {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 }
@@ -501,14 +507,14 @@ button.secondary,
     padding: 10px 10px calc(10px + env(safe-area-inset-bottom));
   }
 
-  fieldset {
-    grid-template-columns: 1fr;
+  .form-section {
     padding: 14px;
   }
 
-  legend {
-    grid-column: 1;
-    align-self: auto;
+  .fields-grid,
+  .fields-grid-3,
+  .fields-grid-5 {
+    grid-template-columns: 1fr;
   }
 
   .form-actions,

@@ -15,7 +15,7 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=v31_20260420_desktop_geometry" />
+  <link rel="stylesheet" href="style.css?v=v32_20260420_form_rebuild" />
   <link rel="icon" href="icon-192.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -86,8 +86,9 @@
   </header>
   <main>
     <form id="calcForm" autocomplete="off">
-      <fieldset>
-        <legend>Směna</legend>
+      <section class="form-section" aria-labelledby="section-shift">
+        <h2 class="section-title" id="section-shift">Směna</h2>
+        <div class="fields-grid fields-grid-3">
         <label><span class="field-title"><span class="ico" aria-hidden="true">👤</span><span>Řidič:</span></span><input type="text" id="driverName" name="driverName" placeholder="Jméno řidiče…" autocomplete="name" required /></label>
         <label><span class="field-title"><span class="ico" aria-hidden="true">⏱️</span><span>Typ směny:</span></span>
           <select id="shiftType" name="shiftType">
@@ -109,10 +110,12 @@
             <option>3BD6003</option>
           </select>
         </label>
-      </fieldset>
+        </div>
+      </section>
 
-      <fieldset>
-        <legend>Kilometry</legend>
+      <section class="form-section" aria-labelledby="section-km">
+        <h2 class="section-title" id="section-km">Kilometry</h2>
+        <div class="fields-grid fields-grid-3">
         <label><span class="field-title"><span class="ico" aria-hidden="true">🏁</span><span>Počáteční km:</span></span>
           <input type="number" id="kmStart" name="kmStart" inputmode="numeric" min="0" step="1" required />
         </label>
@@ -122,10 +125,12 @@
         <label><span class="field-title"><span class="ico" aria-hidden="true">🛣️</span><span>Najeté km:</span></span>
           <input type="number" id="kmReal" name="kmReal" readonly tabindex="-1" />
         </label>
-      </fieldset>
+        </div>
+      </section>
 
-      <fieldset>
-        <legend>Platby a odpočty</legend>
+      <section class="form-section" aria-labelledby="section-money">
+        <h2 class="section-title" id="section-money">Platby a odpočty</h2>
+        <div class="fields-grid fields-grid-5">
         <label><span class="field-title"><span class="ico" aria-hidden="true">💰</span><span>Tržba:</span></span><input type="number" id="trzba" name="trzba" inputmode="decimal" min="0" step="0.01" required /></label>
         <label><span class="field-title"><span class="ico" aria-hidden="true">🏁</span><span>Přístavné:</span></span><input type="number" id="pristavne" name="pristavne" inputmode="decimal" min="0" step="0.01" /></label>
         <label><span class="field-title"><span class="ico" aria-hidden="true">⛽</span><span>Palivo:</span></span><input type="number" id="palivo" name="palivo" inputmode="decimal" min="0" step="0.01" /></label>
@@ -133,7 +138,8 @@
         <label><span class="field-title"><span class="ico" aria-hidden="true">💳</span><span>Kartou:</span></span><input type="number" id="kartou" name="kartou" inputmode="decimal" min="0" step="0.01" /></label>
         <label><span class="field-title"><span class="ico" aria-hidden="true">🧾</span><span>Fakturou:</span></span><input type="number" id="fakturou" name="fakturou" inputmode="decimal" min="0" step="0.01" /></label>
         <label><span class="field-title"><span class="ico" aria-hidden="true">🧾</span><span>Jiné:</span></span><input type="number" id="jine" name="jine" inputmode="decimal" min="0" step="0.01" /></label>
-      </fieldset>
+        </div>
+      </section>
 
       <div class="form-actions">
         <button type="submit"><span class="ico">🧮</span> Vypočítat</button>
@@ -150,9 +156,9 @@
       <button type="button" id="pdfExport"><span class="ico">🧾</span> Uložit PDF</button>
     </div>
   
-    <footer id="appVersion" style="text-align:center;color:#9aa0a6;margin:10px 0;font-size:12px;">RB TAXI Mobile v31_20260420_desktop_geometry</footer>
+    <footer id="appVersion" style="text-align:center;color:#9aa0a6;margin:10px 0;font-size:12px;">RB TAXI Mobile v32_20260420_form_rebuild</footer>
 </main>
 
-  <script src="app.js?v=v31_20260420_desktop_geometry" defer></script>
+  <script src="app.js?v=v32_20260420_form_rebuild" defer></script>
 </body>
 </html>
