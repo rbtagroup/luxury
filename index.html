@@ -15,7 +15,7 @@
   <link rel="manifest" href="manifest.json" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link rel="stylesheet" href="style.css?v=v26_20260420_mobile_label_align" />
+  <link rel="stylesheet" href="style.css?v=v28_20260420_mobile_geometry" />
   <link rel="icon" href="icon-192.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet" />
@@ -88,8 +88,8 @@
     <form id="calcForm" autocomplete="off">
       <fieldset>
         <legend>Směna</legend>
-        <label><span class="ico" aria-hidden="true">👤</span> Řidič: <input type="text" id="driverName" name="driverName" placeholder="Jméno řidiče…" autocomplete="name" required /></label>
-        <label><span class="ico">⏱️</span> Typ směny:
+        <label><span class="field-title"><span class="ico" aria-hidden="true">👤</span><span>Řidič:</span></span><input type="text" id="driverName" name="driverName" placeholder="Jméno řidiče…" autocomplete="name" required /></label>
+        <label><span class="field-title"><span class="ico" aria-hidden="true">⏱️</span><span>Typ směny:</span></span>
           <select id="shiftType" name="shiftType">
             <option value="den">Denní</option>
             <option value="noc">Noční</option>
@@ -97,7 +97,7 @@
             <option value="pul">1/2 směna</option>
           </select>
         </label>
-        <label><span class="ico">🚕</span> RZ vozidla:
+        <label><span class="field-title"><span class="ico" aria-hidden="true">🚕</span><span>RZ vozidla:</span></span>
           <select id="rz" name="rz" required>
             <option value="">— vyberte RZ —</option>
             <option>1BU0299</option>
@@ -113,26 +113,26 @@
 
       <fieldset>
         <legend>Kilometry</legend>
-        <label><span class="ico">🏁</span> Počáteční km:
+        <label><span class="field-title"><span class="ico" aria-hidden="true">🏁</span><span>Počáteční km:</span></span>
           <input type="number" id="kmStart" name="kmStart" inputmode="numeric" min="0" step="1" required />
         </label>
-        <label><span class="ico">🏁</span> Konečné km:
+        <label><span class="field-title"><span class="ico" aria-hidden="true">🏁</span><span>Konečné km:</span></span>
           <input type="number" id="kmEnd" name="kmEnd" inputmode="numeric" min="0" step="1" required />
         </label>
-        <label><span class="ico">🛣️</span> Najeté km:
+        <label><span class="field-title"><span class="ico" aria-hidden="true">🛣️</span><span>Najeté km:</span></span>
           <input type="number" id="kmReal" name="kmReal" readonly tabindex="-1" />
         </label>
       </fieldset>
 
       <fieldset>
         <legend>Platby a odpočty</legend>
-        <label><span class="ico">💰</span> Tržba: <input type="number" id="trzba" name="trzba" inputmode="decimal" min="0" step="0.01" required /></label>
-        <label><span class="ico">🏁</span> Přístavné: <input type="number" id="pristavne" name="pristavne" inputmode="decimal" min="0" step="0.01" /></label>
-        <label><span class="ico">⛽</span> Palivo: <input type="number" id="palivo" name="palivo" inputmode="decimal" min="0" step="0.01" /></label>
-        <label><span class="ico">🧼</span> Mytí: <input type="number" id="myti" name="myti" inputmode="decimal" min="0" step="0.01" /></label>
-        <label><span class="ico">💳</span> Kartou: <input type="number" id="kartou" name="kartou" inputmode="decimal" min="0" step="0.01" /></label>
-        <label><span class="ico">🧾</span> Fakturou: <input type="number" id="fakturou" name="fakturou" inputmode="decimal" min="0" step="0.01" /></label>
-        <label><span class="ico">🧾</span> Jiné: <input type="number" id="jine" name="jine" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="field-title"><span class="ico" aria-hidden="true">💰</span><span>Tržba:</span></span><input type="number" id="trzba" name="trzba" inputmode="decimal" min="0" step="0.01" required /></label>
+        <label><span class="field-title"><span class="ico" aria-hidden="true">🏁</span><span>Přístavné:</span></span><input type="number" id="pristavne" name="pristavne" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="field-title"><span class="ico" aria-hidden="true">⛽</span><span>Palivo:</span></span><input type="number" id="palivo" name="palivo" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="field-title"><span class="ico" aria-hidden="true">🧼</span><span>Mytí:</span></span><input type="number" id="myti" name="myti" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="field-title"><span class="ico" aria-hidden="true">💳</span><span>Kartou:</span></span><input type="number" id="kartou" name="kartou" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="field-title"><span class="ico" aria-hidden="true">🧾</span><span>Fakturou:</span></span><input type="number" id="fakturou" name="fakturou" inputmode="decimal" min="0" step="0.01" /></label>
+        <label><span class="field-title"><span class="ico" aria-hidden="true">🧾</span><span>Jiné:</span></span><input type="number" id="jine" name="jine" inputmode="decimal" min="0" step="0.01" /></label>
       </fieldset>
 
       <div class="form-actions">
@@ -150,9 +150,9 @@
       <button type="button" id="pdfExport"><span class="ico">🧾</span> Uložit PDF</button>
     </div>
   
-    <footer id="appVersion" style="text-align:center;color:#9aa0a6;margin:10px 0;font-size:12px;">RB TAXI Mobile v26_20260420_mobile_label_align</footer>
+    <footer id="appVersion" style="text-align:center;color:#9aa0a6;margin:10px 0;font-size:12px;">RB TAXI Mobile v28_20260420_mobile_geometry</footer>
 </main>
 
-  <script src="app.js?v=v26_20260420_mobile_label_align" defer></script>
+  <script src="app.js?v=v28_20260420_mobile_geometry" defer></script>
 </body>
 </html>

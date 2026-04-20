@@ -1,9 +1,9 @@
-const CACHE_NAME = "rb-taxi-cache-v26-20260420-mobile-label-align";
+const CACHE_NAME = "rb-taxi-cache-v28-20260420-mobile-geometry";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./style.css?v=v26_20260420_mobile_label_align",
-  "./app.js?v=v26_20260420_mobile_label_align",
+  "./style.css?v=v28_20260420_mobile_geometry",
+  "./app.js?v=v28_20260420_mobile_geometry",
   "./icon-192.png",
   "./icon-512.png",
   "./apple-touch-icon.png",

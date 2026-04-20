@@ -49,6 +49,7 @@ body {
   min-height: 100vh;
   min-height: 100svh;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, .045) 0, rgba(255, 255, 255, 0) 180px),
     repeating-linear-gradient(90deg, rgba(255, 255, 255, .025) 0 1px, transparent 1px 42px),
@@ -56,6 +57,7 @@ body {
   color: var(--text);
   font-family: Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   letter-spacing: 0;
+  -webkit-text-size-adjust: 100%;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   touch-action: manipulation;
@@ -195,9 +197,7 @@ legend {
 }
 
 label {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
+  display: block;
   min-width: 0;
   margin: 0;
   color: var(--muted);
@@ -206,27 +206,49 @@ label {
   line-height: 1.2;
 }
 
+.field-title {
+  display: flex;
+  align-items: center;
+  min-width: 0;
+  min-height: 18px;
+  gap: 6px;
+}
+
+.field-title > span:last-child {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
 .ico {
   display: inline-block;
+  flex: 0 0 1.4em;
   width: 1.4em;
   margin-right: 6px;
   text-align: center;
   line-height: 1;
-  vertical-align: -2px;
+}
+
+.field-title .ico {
+  margin-right: 0;
 }
 
 input,
 select,
 textarea {
+  display: block;
   width: 100%;
+  min-width: 0;
   min-height: 46px;
   padding: 0 12px;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background: rgba(0, 0, 0, .18);
+  appearance: none;
+  -webkit-appearance: none;
+  background-color: rgba(0, 0, 0, .18);
   color: var(--text);
   font: inherit;
   font-size: 16px;
+  line-height: normal;
   outline: none;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, .05);
   transition: border-color .16s ease, background .16s ease, box-shadow .16s ease, transform .12s ease;
@@ -235,15 +257,25 @@ textarea {
 label input,
 label select,
 label textarea {
-  display: block;
-  flex: 0 0 100%;
   margin-top: 7px;
 }
 
 body.light-mode input,
 body.light-mode select,
 body.light-mode textarea {
-  background: rgba(255, 255, 255, .84);
+  background-color: rgba(255, 255, 255, .84);
+}
+
+select {
+  padding-right: 36px;
+  background-image:
+    linear-gradient(45deg, transparent 50%, currentColor 50%),
+    linear-gradient(135deg, currentColor 50%, transparent 50%);
+  background-position:
+    calc(100% - 18px) 50%,
+    calc(100% - 12px) 50%;
+  background-repeat: no-repeat;
+  background-size: 6px 6px;
 }
 
 input[type="number"] {
@@ -273,12 +305,6 @@ textarea:focus-visible,
 button:focus-visible {
   border-color: var(--accent);
   box-shadow: 0 0 0 3px rgba(242, 201, 76, .24), inset 0 1px 0 rgba(255, 255, 255, .08);
-}
-
-input:hover,
-select:hover,
-textarea:hover {
-  transform: translateY(-1px);
 }
 
 ::placeholder {
@@ -319,11 +345,6 @@ button {
   cursor: pointer;
   box-shadow: 0 14px 28px rgba(0, 0, 0, .2), inset 0 1px 0 rgba(255, 255, 255, .55);
   transition: transform .12s ease, border-color .16s ease, filter .16s ease, background .16s ease, color .16s ease;
-}
-
-button:hover {
-  filter: brightness(1.04);
-  transform: translateY(-1px);
 }
 
 button:active {
@@ -507,6 +528,19 @@ button.secondary,
 
   #output .row .val {
     text-align: left;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  input:hover,
+  select:hover,
+  textarea:hover {
+    transform: translateY(-1px);
+  }
+
+  button:hover {
+    filter: brightness(1.04);
+    transform: translateY(-1px);
   }
 }
 
