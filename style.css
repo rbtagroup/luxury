@@ -195,12 +195,15 @@ legend {
 }
 
 label {
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   min-width: 0;
   margin: 0;
   color: var(--muted);
   font-size: 13px;
   font-weight: 800;
+  line-height: 1.2;
 }
 
 .ico {
@@ -232,6 +235,8 @@ textarea {
 label input,
 label select,
 label textarea {
+  display: block;
+  flex: 0 0 100%;
   margin-top: 7px;
 }
 

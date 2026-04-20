@@ -1,9 +1,9 @@
-const CACHE_NAME = "rb-taxi-cache-v25-20260417-luxury-themefix";
+const CACHE_NAME = "rb-taxi-cache-v26-20260420-mobile-label-align";
 const CORE_ASSETS = [
   "./",
   "./index.html",
-  "./style.css?v=v25_20260417_luxury_themefix",
-  "./app.js?v=v25_20260417_luxury_themefix",
+  "./style.css?v=v26_20260420_mobile_label_align",
+  "./app.js?v=v26_20260420_mobile_label_align",
   "./icon-192.png",
   "./icon-512.png",
   "./apple-touch-icon.png",

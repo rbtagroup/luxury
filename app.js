@@ -1,7 +1,7 @@
 
 document.addEventListener("DOMContentLoaded", () => {
   // === CONFIG ===
-  const APP_VERSION = "v25_20260417_luxury_themefix";
+  const APP_VERSION = "v26_20260420_mobile_label_align";
   const COMMISSION_RATE = 0.30;        // 30 % z netto tržby
   const BASE_FULL_SHIFT = 1000;        // fix pro plnou směnu
   const BASE_HALF_SHIFT = 500;         // fix pro 1/2 směnu
